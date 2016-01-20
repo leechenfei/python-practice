@@ -1,0 +1,180 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import math
+
+# Fun With Numbers
+
+# 1. is_even()
+
+def is_even(x):
+    if x%2 == 0:
+        return True
+    else:
+        return False
+
+# 2. is_int():
+
+def is_int(x):
+    if x - math.trunc(x) == 0:
+        return True
+    else:
+        return False
+
+# 3. digit_sum()
+#  ????
+
+def digit_sum(n):
+    if n < 10:
+        print n
+        return n
+    else:
+        m = 0
+        while m >= 0:
+            m = m +1
+            if n//(10 ** m) == 0:
+                return m
+                print m
+                break
+        sum = n%10
+        for i in range(m):
+            sum = sum + n//(10 ** (m-i))
+        return sum
+
+# 4. facotrial()  --n!
+
+def factorial(x):
+    c = 1
+    for i in range(1,x+1):
+        c *=i
+    return c
+
+# 5. is_prime()
+# A prime number is a positive integer greater than 1 that has no positive divisors other than 1 and itself.
+# For each number n from 2 to x - 1, test if x is evenly divisible by n.
+
+def is_prime(x):
+    if x < 2 :
+        return False
+    else:
+        sum = 0
+        for n in range(2, x):
+
+            if x % n == 0:
+                sum +=1
+        if sum >= 1:
+            return False
+
+        else:
+            return True
+
+# String It Together
+
+# 6. Reverse()
+#  short version [::-1]
+# returns that string in reverse.
+
+def reverse(string):
+    # Initialize left and right pointers
+    temp = ''
+    for i in range(len(string)):
+        temp += string[len(string)-1-i]
+    return temp
+
+# 7. Define a function called anti_vowel that takes one string, text, as input and returns the text with all of the vowels removed.
+
+def anti_vowel(text):
+    for i in text:
+        if i in 'aeiouAEIOU':
+            text= text.replace(i, "")
+            #print text2
+    return text
+
+# 8. Define a function scrabble_score that takes a string word as input and returns the equivalent scrabble score for that word.
+
+def scrabble_score(word):
+    score = {"a": 1, "c": 3, "b": 3, "e": 1, "d": 2, "g": 2,
+         "f": 4, "i": 1, "h": 4, "k": 5, "j": 8, "m": 3,
+         "l": 1, "o": 1, "n": 1, "q": 10, "p": 3, "s": 1,
+         "r": 1, "u": 1, "t": 1, "w": 4, "v": 4, "y": 4,
+         "x": 8, "z": 10}
+    word = word.lower()
+    total = 0
+    for i in word:
+        total = total + score[i]
+    return total
+
+# 9. censor()
+# censor that takes two strings, text and word, as input. It should return the text with the word you chose replaced with asterisks.
+# censor("this hack is wack hack", "hack") should return "this **** is wack ****"
+
+def censor(text, word):
+    text = text.split(" ")
+    print text
+    for i in text:
+        if i == word:
+            ind = text.index(i)
+
+            text.remove(i)
+
+            temp = "*" * len(i)
+
+            text.insert(ind,temp)
+    return ' '.join(text)
+
+# Listing Your Problem
+
+# 10. count(sequence, item) return the number of times the item occurs in the list.
+# For example: count([1,2,1,1], 1) should return 3
+
+def count(squence,item):
+    found = 0
+    for i in squence:
+        if i == item:
+            found +=1
+
+    return found
+
+# 11. purity() removes all odd numbers in the list, and returns the result
+# purify([1,2,3]) should return [2]
+
+def purify(lst):
+    new_list = []
+    for i in lst:
+        if i % 2 == 0:
+            new_list.append(i)
+    lst = new_list
+    return lst
+
+# 12. product(lst) takes a list of integers as input and returns the product of all of the elements in the list.
+# For example: product([4, 5, 5]) should return 100 (because 4 * 5 * 5 is 100).
+
+def product(lst):
+    mul = 1
+    for i in lst:
+        mul = mul *i
+    return mul
+
+# 13. remove_duplicates(lst) takes in a list and removes elements of the list that are the same.
+# For example: remove_duplicates([1,1,2,2]) should return [1,2].
+# Do not modify the list you take as input! Instead, return a new list.
+
+def remove_duplicates(lst):
+    new_list = []
+    for i in lst:
+        if i not in new_list:
+            new_list.append(i)
+    lst = new_list
+    return lst
+
+# 14. median() is the middle number in a sorted sequence of numbers.
+
+def median(lst):
+    lst.sort()
+    if len(lst) % 2 !=0:
+        return lst[(len(lst)-1)/2]
+    else:
+        return (lst[len(lst)/2 -1] + lst[len(lst)/2])/2.0
+
+
+
